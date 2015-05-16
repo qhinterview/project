@@ -95,6 +95,14 @@ namespace qh
         */
         std::string nextString();
 
+	/**
+        * Get the characters up to the last character.
+        *
+        * @return the string
+        */
+	std::string getLastString();
+
+
         /**
         * Skip characters until the next character is the requested character.
         * If the requested character is not found, no characters are skipped.
@@ -337,6 +345,17 @@ namespace qh
 
         assert( m_pCurPos > startpos );
         return std::string( startpos, m_pCurPos - startpos - 1 );
+    }
+
+    inline std::string Tokener::getLastString()
+    {
+	if(isEnd()){
+		return std::string();
+	}
+
+	const char* startpos = m_pCurPos;
+	m_pCurPos = m_pDataEnd;
+	return std::string( startpos, m_pDataEnd - startpos);
     }
 
     inline char Tokener::skipTo( char to )

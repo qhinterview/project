@@ -100,6 +100,32 @@ namespace qh
     {
 #if 1
         //TODO 请面试者在这里添加自己的代码实现以完成所需功能
+		Tokener token(raw_url);
+		token.skipTo('?');
+		token.next();
+
+		std::string sub_parameter_part;
+		std::string key;
+		while(!token.isEnd()){
+			while('&' == token.current()){
+				token.next();
+			}
+			sub_parameter_part = token.nextString('&');
+			if(sub_parameter_part.empty()){
+				sub_parameter_part = token.getLastString();
+			}
+
+			Tokener sub_token(sub_parameter_part);
+			key = sub_token.nextString('=');
+			if(key.empty()){
+				key = sub_token.getLastString();
+			}
+
+			if(keys.find(key) != keys.end()){
+				sub_url = sub_token.getLastString();
+			}
+
+		}
 #else
         //这是一份参考实现，但在特殊情况下工作不能符合预期
         Tokener token(raw_url);

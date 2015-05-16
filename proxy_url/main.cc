@@ -121,7 +121,11 @@ void test_ProxUrlExtractor_Extract2()
         {"http://www.microsofttranslator.com/bv.aspx?from=&to=zh-chs&query=http://hnujug.com/", "http://hnujug.com/"},
         {"http://translate.baiducontent.com/transpage?cb=translateCallback&ie=utf8&source=url&query=cdmaw.com&from=en&to=zh&token=&monLang=zh", "cdmaw.com"},
         {"http://fanyi.baidu.com/transpage?url=http%3A%2F%2Fwww.so.com&from=en&to=zh", "http%3A%2F%2Fwww.so.com"},
-        {"http://www.microsofttranslator.com/bv.aspx?from=&to=zh-chs&query=http://hnujug.com/&xxx=kvpair_token", "http://hnujug.com/"}
+        {"http://www.microsofttranslator.com/bv.aspx?from=&to=zh-chs&query=http://hnujug.com/&xxx=kvpair_token", "http://hnujug.com/"},
+		{"http://www.microsofttranslator.com/bv.aspx?from=&to=zh-chs&query=http://hnujug.com/&xxx=kvpair_token&u=me", "me"},
+		{"http://www.microsofttranslator.com/bv.aspx?from=&to=zh-chs&query=http://hnujug.com/&xxx=kvpair_token&u=", ""},
+		{"http://www.microsofttranslator.com/bv.aspx?from=&to=zh-chs&query=http://hnujug.com/&xxx=kvpair_token&u", ""},
+		{"http://www.microsofttranslator.com/bv.aspx?from=&to=zh-chs&u=me&query&xxx=kvpair_token", ""},
     };
 
 
