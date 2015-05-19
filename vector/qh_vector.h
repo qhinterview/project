@@ -154,7 +154,7 @@ namespace qh
 					data_[i] = old_data[i];
 				}
 
-				delete old_data[];
+				delete []old_data;
 				begin_ = data_;
 				end = begin_ + size_;
 				reserve_size_ = n;

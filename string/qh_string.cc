@@ -1,5 +1,5 @@
 #include "qh_string.h"
-
+#include <stdio.h>
 #include <string.h>
 
 namespace qh
@@ -11,7 +11,7 @@ namespace qh
 			return p;
 		}
 		else{
-			printf("out of memory");
+			fprintf(stderr,"out of memory");
 			exit(-1);
 		}
 	}
@@ -38,7 +38,7 @@ namespace qh
 	string::string( const char* s, size_t len )
 	{
 		if(NULL != s && len > 0){
-			int s_len = strlen(s);
+			size_t s_len = strlen(s);
 			if(s_len <= len){
 				data_ = (char*)my_molloc(sizeof(char) * s_len + 1);
 				strcpy(data_, s);
@@ -46,7 +46,7 @@ namespace qh
 			}
 			else{
 				data_ = (char*)my_molloc(sizeof(char) * len + 1);
-				for(int i = 0; i < len; i++){
+				for(size_t i = 0; i < len; i++){
 					data_[i] = s[i];
 				}
 				data_[len] = 0;
